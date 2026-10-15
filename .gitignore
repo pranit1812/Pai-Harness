@@ -2,8 +2,9 @@ __pycache__/
 *.pyc
 .env
 .venv/
-prototype/factory/rooms/*/
+prototype/factory/rooms/
 prototype/factory/output/
-prototype/factory/data/*.json
-!prototype/factory/data/.gitkeep
+prototype/factory/data/*.db
+prototype/factory/data/*.log
+prototype/factory/screenshot.png
 .DS_Store
