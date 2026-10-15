@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Software Factory</title>
+<style>body{font-family:system-ui;background:#0d0f14;color:#e6e6e6;margin:20px}h1{margin:0 0 4px}
+.cols{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.col{background:#161a22;border-radius:8px;padding:10px;min-height:120px}
+.card{background:#222837;border-radius:6px;padding:8px;margin:6px 0;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:12px;margin-top:16px}td,th{border-bottom:1px solid #2a3040;padding:4px;text-align:left}
+.pass,.saved,.verdict{color:#5fd38d}.fail{color:#ff6b6b}.running{color:#f5c542}small{color:#8a93a6}button{background:#3b82f6;color:#fff;border:0;padding:6px 12px;border-radius:5px}</style></head>
+<body><h1>Software Factory</h1><small id="models"></small><p><button onclick="add()">+ Landing page card</button></p>
+<div class="cols"><div class="col"><b>NEW</b><div id="new"></div></div><div class="col"><b>PICKED UP</b><div id="picked_up"></div></div>
+<div class="col"><b>DONE (human verify)</b><div id="done"></div></div><div class="col"><b>FAILED</b><div id="failed"></div></div></div>
+<table><thead><tr><th>card</th><th>block</th><th>worker</th><th>model</th><th>try</th><th>status</th><th>detail</th></tr></thead><tbody id="runs"></tbody></table>
+<script>
+async function add(){await fetch('/cards',{method:'POST',body:JSON.stringify({source:'dashboard'})});tick()}
+function esc(s){return String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+async function tick(){const s=await (await fetch('/api/state')).json();
+document.getElementById('models').textContent='router models: '+s.models.join(', ')+(s.local.length?' | local ollama: '+s.local.join(','):' | no local ollama detected');
+for(const k of['new','picked_up','done','failed'])document.getElementById(k).innerHTML='';
+for(const c of s.cards){const r=c.result?JSON.parse(c.result):{};const w=r.winner?`<br>winner: <b>${r.winner.worker}</b> (${r.winner.model}) <a style="color:#7aa7ff" href="/output/card${c.id}/index.html">view</a>`:'';
+(document.getElementById(c.status)||{}).innerHTML+=`<div class="card">#${c.id} ${esc(c.title)} <small>via ${esc(c.source)}</small>${w}</div>`}
+document.getElementById('runs').innerHTML=s.runs.map(r=>`<tr><td>${r.card}</td><td>${r.block}</td><td>${r.worker}</td><td>${r.model}</td><td>${r.attempt}</td><td class="${r.status}">${r.status}</td><td>${esc(r.detail).slice(0,120)}</td></tr>`).join('')}
+tick();setInterval(tick,1000)</script></body></html>

@@ -1,0 +1,61 @@
+steipete/CodexBar	22527	2026-10-15	False	Show usage stats for OpenAI Codex and Claude Code, without having to login.
+nesszer/Win-CodexBar	1157	2026-10-15	False	Show usage stats for OpenAI Codex and Claude Code, without having to login. But for Window
+ccusage/ccusage	19015	2026-10-15	False	npx ccusage
+janekbaraniewski/openusage	225	2026-10-13	False	The one dashboard you’ve been looking for — track spend and usage across Claude, Cursor, O
+Maciek-roboblog/Claude-Code-Usage-Monitor	8742	2026-07-05	False	Real-time Claude Code usage monitor with predictions and warnings
+getAgentSeal/codeburn	11459	2026-10-15	False	Free, local tool to track AI coding token usage and cost across 37 tools and agents (Claud
+BerriAI/litellm	61318	2026-10-15	False	The fastest, litest AI Gateway. Rust core with Python SDK. Call 100+ LLM APIs in OpenAI (o
+vllm-project/semantic-router	6179	2026-10-15	False	An open, programmable decision layer for models and compute.
+katanemo/plano	7090	2026-10-07	False	Plano is an AI-native proxy server and data plane for agentic apps. Smart LLM routing, obs
+lm-sys/RouteLLM	5605	2024-08-10	False	A framework for serving and evaluating LLM routers - save LLM costs without compromising q
+ulab-uiuc/LLMRouter	3008	2026-10-09	False	LLMRouter: An Open-Source Library for LLM Routing
+NandhaKishorM/laya	33018	2026-10-15	False	Non-autoregressive System 1 decision engine. Typed choice, score and yes/no decisions over
+Not-Diamond/notdiamond-python	91	2025-12-11	True	Not Diamond Python SDK
+agentclientprotocol/agent-client-protocol	4451	2026-10-15	False	 A protocol for connecting any editor to any agent
+agentclientprotocol/codex-acp	456	2026-10-15	False	ACP server implementation that exposes Codex CLI functionality for smoother client and IDE
+openclaw/acpx	3349	2026-10-15	False	Headless CLI client for stateful Agent Client Protocol (ACP) sessions
+anthropics/claude-code	151018	2026-10-14	False	Claude Code is an agentic coding tool that lives in your terminal, understands your codeba
+openai/codex	129369	2026-10-15	False	Lightweight coding agent that runs in your terminal
+anomalyco/opencode	213801	2026-10-15	False	The open source coding agent.
+google-gemini/gemini-cli	107381	2026-10-14	False	An open-source AI agent that brings the power of Gemini directly into your terminal.
+earendil-works/pi	115393	2026-10-15	False	AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI
+BloopAI/vibe-kanban	28373	2026-09-19	False	Get 10X more out of Claude Code, Codex or any coding agent
+smtg-ai/claude-squad	8608	2026-08-20	False	Manage multiple AI terminal agents like Claude Code, Codex, OpenCode, and Amp.
+frankbria/parallel-cc	14	2026-10-14	False	Automated parallel management of Claude Code versions using Git worktrees and autonomous c
+e2b-dev/E2B	14365	2026-10-14	False	Open-source, secure environment with real-world tools for enterprise-grade agents.
+OpenHands/OpenHands	90973	2026-10-15	False	🙌 OpenHands: AI-Driven Development
+anthropics/skills	181308	2026-10-09	False	Public repository for Agent Skills
+NousResearch/hermes-agent	254010	2026-10-15	False	The agent that grows with you
+ShengranHu/ADAS	1649	2025-01-28	False	[ICLR 2025] Automated Design of Agentic Systems
+modelcontextprotocol/registry	7362	2026-10-14	False	A community driven registry service for Model Context Protocol (MCP) servers.
+a2aproject/A2A	26162	2026-10-13	False	Agent2Agent (A2A) is an open protocol enabling communication and interoperability between 
+openai/openai-agents-python	30057	2026-10-15	False	A lightweight, powerful framework for multi-agent workflows
+langfuse/langfuse	35866	2026-10-15	False	🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications w
+Arize-ai/phoenix	11857	2026-10-15	False	AI Observability & Evaluation
+open-telemetry/semantic-conventions	670	2026-10-15	False	Defines standards for generating consistent, accessible telemetry across a variety of doma
+ollama/ollama	183254	2026-10-15	False	Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other model
+vllm-project/vllm	93860	2026-10-15	False	A high-throughput and memory-efficient inference and serving engine for LLMs
+ggml-org/llama.cpp	131266	2026-10-15	False	LLM inference in C/C++
+strongdm/attractor	1332	2026-03-17	False	nlspec of StrongDM's Attractor, a non-interactive Coding Agent sufficient for use in a Sof
+langchain-ai/langgraph	43310	2026-10-15	False	Build resilient agents.
+aaif-goose/goose	55305	2026-10-15	False	an open source, extensible AI agent that goes beyond code suggestions - install, execute, 
+promptfoo/promptfoo	26016	2026-10-15	False	Test your prompts, agents, and RAGs. Red teaming/pentesting/vulnerability scanning for AI.
+openclaw/openclaw	392084	2026-10-15	False	The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 
+open-webui/open-webui	155787	2026-10-15	False	User-friendly AI Interface (Supports Ollama, OpenAI API, ...)
+n8n-io/n8n	207478	2026-10-15	False	Fair-code workflow automation platform with native AI capabilities. Combine visual buildin
+temporalio/temporal	23732	2026-10-15	False	Temporal service
+dagger/dagger	16342	2026-10-15	False	Automation engine to build, test and ship any codebase. Runs locally, in CI, or directly i
+microsoft/playwright	97773	2026-10-15	False	Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Fire
+dequelabs/axe-core	7653	2026-10-15	False	Accessibility engine for automated Web UI testing
+lobehub/lobe-chat	?	?		Moved Permanently
+siteboon/claudecodeui	14106	2026-10-15	False	Use Claude Code, OpenCode, Cursor CLI, and Codex on mobile and web with CloudCLI (aka Clau
+sugyan/claude-code-webui	1137	2026-05-29	True	Web-based interface for Claude CLI with streaming chat responses
+Aider-AI/aider	49567	2026-05-22	False	aider is AI pair programming in your terminal
+coder/agentapi	1496	2026-09-13	True	HTTP API for Claude Code, Goose, Aider, Gemini, Amp, and Codex
+lobehub/lobehub	83244	2026-10-15	False	🤯 LobeHub is your Chief Agent Operator, organizing your agents into 7×
+VincentShipsIt/meterbar.dev	8	2026-10-15	False	Track your AI coding assistant usage limits from the macOS menu bar
+sachiniyer/agent-factory	2	2026-10-15	False	mutilated claude squad
+slackapi/bolt-python	1329	2026-10-09	False	A framework to build Slack apps using Python
+ntfy-sh/ntfy	Not Found	?		
+anthropics/claude-agent-sdk-python	8284	2026-10-14	False	
+agentclientprotocol/claude-agent-acp	2651	2026-10-15	False	Use Claude Agent SDK from any ACP client

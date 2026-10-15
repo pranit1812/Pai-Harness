@@ -1,0 +1,19 @@
+flowchart TB
+  T["Triggers: Slack, phone, dashboard"] -->|POST /cards| B[("Task board")]
+  B --> JR{{"JOB ROUTER<br/>rules, then Jev choice<br/>(Laya local fallback)"}}
+  REG[("Block registry<br/>SKILL.md + block.yaml")] -.-> JR
+  BB["Block builder<br/>skill-creator + Hermes curator"] --> REG
+  JR -->|low confidence| U["You: pick / approve"]
+  JR --> MR{{"MODEL ROUTER<br/>needs + tier + credits"}}
+  LED[("Credit ledger<br/>OpenRouter live, caps for rest")] -.-> MR
+  MR -->|close call or over budget| U
+  MR --> O["Claude orchestrator<br/>plans the block"]
+  O -->|MCP tool: run_cli_agent| ACP["ACP client"]
+  ACP --> W1["Codex"] & W2["opencode / local"] & W3["Cursor agent"] & W4["Gemini CLI / pi"]
+  W1 & W2 & W3 & W4 --> C["Code checks + judge"]
+  C --> H["You: final verify"]
+  JR & MR & O & C -.->|OTel spans| AUD[("Audit: decision log<br/>Langfuse / dashboard")]
+  classDef r fill:#ffd9d9,stroke:#c33
+  classDef a fill:#fff3c4,stroke:#b80
+  class JR,MR r
+  class AUD,LED a

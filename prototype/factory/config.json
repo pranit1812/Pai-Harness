@@ -1,0 +1,15 @@
+{
+  "models": {
+    "mock-opus":   {"provider": "mock", "style": "full"},
+    "mock-sonnet": {"provider": "mock", "style": "minimal"},
+    "mock-gpt":    {"provider": "mock", "style": "broken"},
+    "mock-judge":  {"provider": "mock"},
+    "claude-opus":  {"provider": "openai", "base_url": "http://localhost:4000/v1", "model": "anthropic/claude-opus", "api_key_env": "LITELLM_KEY"},
+    "gpt":          {"provider": "openai", "base_url": "http://localhost:4000/v1", "model": "openai/gpt", "api_key_env": "LITELLM_KEY"},
+    "local-qwen":   {"provider": "openai", "base_url": "http://localhost:11434/v1", "model": "qwen2.5-coder:7b"}
+  },
+  "auto_local": "http://localhost:11434/v1",
+  "split_workers": ["mock-opus", "mock-sonnet", "mock-gpt"],
+  "judge": "mock-judge",
+  "max_retries": 2
+}

@@ -1,0 +1,18 @@
+flowchart TB
+  T["Triggers: Slack, phone, dashboard"] -->|POST /cards| B[("Task board")]
+  B --> JR{{"1. JOB ROUTER<br/>tags, then Arch-Router<br/>picks block(s)"}}
+  BB["Block builder<br/>'I want a front-end checker'<br/>draft, test, register"] --> REG[("Block registry<br/>block.yaml bricks")]
+  REG -.-> JR
+  JR --> A
+  subgraph BL["Block (own queue + listener)"]
+    A["Agent"] --> C["Code checks"]
+    C -->|fail| A
+    C -->|pass| J["Judge, fresh context"]
+  end
+  A -.-> MR{{"2. MODEL ROUTER<br/>filter by needs, score"}}
+  MR --> P[("Model pool<br/>Cloud: Claude, GPT<br/>Local: Ollama, vLLM<br/>CLIs: opencode, codex")]
+  MR -.->|close call or over budget| U["You: pick model"]
+  J --> L["Run log"] -.->|learns| MR
+  J --> H["You: final verify"]
+  classDef r fill:#ffd9d9,stroke:#c33,font-size:20px
+  class JR,MR r
