@@ -1,0 +1,58 @@
+# Example pool. setup.sh / setup.ps1 overwrite config/pool.yaml locally.
+generated: false
+decision_engine: laya
+credit_policy:
+  prefer: [subscription, free_quota, local]
+  avoid: [metered_api]
+  meters: [codexbar, ccusage]
+  note: No hard dollar caps; route away when a plan window is near its limit.
+models:
+  - id: ollama-qwen-coder
+    kind: local
+    endpoint: http://localhost:11434/v1
+    model: qwen2.5-coder:1.5b
+    cost: free
+    enabled: true
+  - id: opencode-local
+    kind: agent_cli
+    run: opencode
+    cost: free
+    via: ollama
+    enabled: true
+  - id: gemini-free
+    kind: agent_cli
+    run: gemini
+    cost: free_quota
+    enabled: true
+  - id: cursor-agent
+    kind: agent_cli
+    run: agent
+    cost: free_quota_or_subscription
+    enabled: true
+  - id: codex
+    kind: agent_cli
+    run: codex
+    cost: free_quota_or_subscription
+    auth: chatgpt
+    enabled: true
+  - id: pi
+    kind: agent_cli
+    run: pi
+    cost: free_or_local
+    enabled: true
+  - id: kilo-free
+    kind: agent_cli
+    run: kilo
+    cost: free_quota
+    model_hint: kilo-auto/free
+    enabled: true
+  - id: claude-code
+    kind: agent_cli
+    run: claude
+    cost: subscription
+    enabled: false
+  - id: copilot
+    kind: agent_cli
+    run: copilot
+    cost: subscription
+    enabled: false

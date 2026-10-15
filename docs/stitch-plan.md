@@ -70,6 +70,13 @@ Trigger (Slack/API/phone/n8n)
 3. Sessions persist (SQLite or acpx-style ACP session ids).
 4. UI can borrow CloudCLI / vibe-kanban patterns; our API stays the source of truth.
 
+## Decisions locked in (Pranit)
+
+1. Decision engine: **Laya only** (no Jev).
+2. No dollar caps. Prefer subscription/free/local. Avoid metered API spend.
+3. Credit awareness = CodexBar/ccusage **usage-limit windows**; route away near the limit.
+4. Machines: macOS and Windows (CodexBar + Win-CodexBar).
+
 ## Credits integration (concrete)
 
 1. Prefer `codexbar serve` or `codexbar usage --format json` as the live feed.

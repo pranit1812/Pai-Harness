@@ -8,3 +8,5 @@ prototype/factory/data/*.db
 prototype/factory/data/*.log
 prototype/factory/screenshot.png
 .DS_Store
+
+config/pool.yaml

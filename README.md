@@ -1,69 +1,115 @@
-# Software Factory
+# Pai-Harness (Software Factory)
 
-Design + research + a small mock prototype for a **credit-aware, multi-chat software factory** on your PC.
+Credit-aware, multi-chat software factory for your PC. Prefer **subscription + free quota + local**. Decision engine: **Laya only** (no Jev). Usage meters: CodexBar / Win-CodexBar + ccusage. Route away when a plan window is near its limit. Never buy extra metered credits by default.
 
-Status on 15 Oct 2026: **design and prototype only**. No GitHub remote has been created yet. Parent agent will push when you say so.
+Status: design + mock prototype + **one-click setup scripts**. Verified research dated 15 Oct 2026.
 
-## What this is
+## Quick start
 
-1. A job lands on a board (API, Slack, phone, or chat).
-2. A **job router** picks the right block (designer, checker, …) using rules + System-1 decision models (Jev / Laya).
-3. A **model router** picks the right LLM or coding CLI from your pool, using **live usage/credits** (CodexBar, ccusage, …), priority, and budget.
-4. **Claude** orchestrates; Codex / Cursor / Gemini / opencode / pi run as **ACP subagents** in git worktree "rooms".
-5. Deterministic checks run; a judge reviews finished work; you only verify the end.
-6. You can **create new blocks by prompting**; Hermes-style suggestions and curator keep the registry healthy.
-7. Every decision is on an **audit timeline**.
+### macOS / Linux
+
+```bash
+git clone https://github.com/pranit1812/Pai-Harness.git
+cd Pai-Harness
+./setup.sh
+```
+
+Non-interactive (default free CLI set, skip browser login):
+
+```bash
+./setup.sh --yes --skip-login
+```
+
+Dry run (print actions only):
+
+```bash
+./setup.sh --dry-run --yes
+```
+
+### Windows (PowerShell)
+
+```powershell
+git clone https://github.com/pranit1812/Pai-Harness.git
+cd Pai-Harness
+powershell -ExecutionPolicy Bypass -File .\setup.ps1
+```
+
+Non-interactive:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\setup.ps1 -Yes -SkipLogin
+```
+
+Dry run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\setup.ps1 -DryRun -Yes
+```
+
+### Cross-platform wrapper
+
+There is no single binary named `setup`. Use:
+
+1. macOS/Linux: `./setup.sh`
+2. Windows: `setup.ps1`
+3. Same flags in spirit: dry-run / yes / skip-login
+
+`setup.sh` and `setup.ps1` both write `config/pool.yaml` from what got installed, run health checks, and never write secrets into the repo.
+
+## What setup installs (default free set)
+
+1. Ollama + small `qwen2.5-coder:1.5b`
+2. OpenCode (local via Ollama)
+3. Gemini CLI (unpaid API key path, ~250 req/day Flash)
+4. Cursor CLI Hobby
+5. Codex CLI (ChatGPT Free limited or your Plus sub)
+6. pi, Kilo free tier
+7. ccusage + CodexBar (Mac) / Win-CodexBar (Windows)
+8. Laya (`pip`/`uv`)
+
+Optional toggles: Claude Code (Pro/Max), Copilot, Cline, Crush, Qwen (local only; cloud OAuth free tier ended Apr 2026).
+
+Full limits and sources: `docs/free-clis.md`.
+
+## Routing policy (your decisions)
+
+1. Laya only for System-1 decisions (no Jev).
+2. No dollar spending caps: you run subscriptions and do not buy extra credits.
+3. Credit awareness = plan **usage-limit windows** via CodexBar/ccusage; back off when near the limit.
+4. Prefer: subscription quota, then free quota, then local. Avoid metered API keys.
 
 ## Layout
 
 ```
-software-factory/
-  README.md                 ← you are here
+Pai-Harness/
+  README.md
+  setup.sh / setup.ps1
+  config/pool.yaml          (generated locally; example committed)
   docs/
-    problem-map.md          ← 12 problem areas × verified repos
-    venn.md                 ← text overlap clusters
-    venn.png                ← big overlap diagram
-    stitch-plan.md          ← top 10 stitch + what we write
-    archive/factory-design/ ← v1 and v2 design notes
-  prototype/factory/        ← earlier mock end-to-end demo
-  research/meta.tsv         ← GitHub stars/push dump
+    free-clis.md
+    problem-map.md
+    venn.md / venn.png
+    stitch-plan.md
+    usage-tools.md
+    archive/factory-design/
+  prototype/factory/        mock demo
 ```
 
-## Run the mock prototype (optional)
-
-Models are stand-ins. Real keys and Ollama are not required.
+## Mock prototype (optional)
 
 ```bash
 cd prototype/factory
 python3 run.py --demo
-# dashboard → http://127.0.0.1:8787
+# dashboard http://127.0.0.1:8787
 ```
 
-## Run on your PC (when we build for real)
+## Docs to read
 
-1. Clone this repo.
-2. Install: Ollama (optional local), coding CLIs you use, CodexBar or ccusage for usage.
-3. Copy `.env.example` → `.env` (Anthropic / OpenRouter / etc. as you choose).
-4. `python3 -m factory` (exact entrypoint lands when the build starts).
-5. Open the dashboard; create a card; watch the decision timeline.
+1. `docs/free-clis.md` - free/subscription CLI matrix
+2. `docs/stitch-plan.md` - repos to stitch
+3. `docs/problem-map.md` - full area map
+4. `docs/usage-tools.md` - CodexBar siblings
 
-## Docs to read first
+## Secrets
 
-1. `docs/stitch-plan.md` - what to stitch and what we write.
-2. `docs/problem-map.md` - full area × repo table.
-3. `docs/venn.png` + `docs/venn.md` - overlaps.
-4. `docs/archive/factory-design/v2/design.md` - earlier detailed v2.
-
-## Corrected finding: credits
-
-Usage is **not** OpenRouter-only. Primary tools:
-
-1. [CodexBar](https://github.com/steipete/CodexBar) - https://codexbar.app/ - CLI + `serve` JSON, 100+ providers.
-2. [ccusage](https://github.com/ccusage/ccusage) - local cost across Claude, Codex, OpenCode, Hermes, pi, Gemini, …
-3. Also: CodeBurn, OpenUsage, Win-CodexBar, MeterBar, Claude-Code-Usage-Monitor.
-
-## Not done yet
-
-1. GitHub remote (parent will create when you approve).
-2. Real model wiring and ACP worker loop.
-3. Your answers: Jev key vs Laya-only; monthly caps; which CLIs you are logged into.
+Never commit API keys, cookies, or OAuth tokens. Logins stay in each CLI's local store / OS keychain. Put optional env vars (for example `GEMINI_API_KEY`) in your shell profile, not in this repo.
