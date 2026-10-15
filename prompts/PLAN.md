@@ -1,6 +1,9 @@
-# Plan prompt for Pai-Harness (paste into a fresh session with this repo attached)
+# Plan prompt for Pai-Harness (for a planning-only model)
 
-You are planning, not coding. Do not write application code in this session.
+You are a planner. You cannot run code, install anything, or test anything, and you do not need to.
+Your output is text only: a critique, a plan, and three draft documents that a separate coding
+agent (Claude Code, Opus) will later follow. Write everything in plain Markdown in your reply.
+If you cannot open a file, say which one and continue with what you have.
 
 ## The concept (read first, do not re-decide)
 Pai-Harness is a local "software factory" for one developer who uses many AI coding tools.
@@ -45,13 +48,22 @@ A desktop-quality app at the level of the Codex app or better:
    Propose a fix for each. Keep the locked decisions unless something truly blocks.
 2. Architecture: processes, languages, frameworks, and the main data shapes
    (card, block manifest, model pool, decision record). Pick a frontend stack and say why.
-3. Repo choices: which existing open source repos to use directly vs only borrow ideas from.
-   Verify each is active today. No invented repos.
-4. Milestones: 8 to 12 milestones, each buildable by Claude Code (Opus) in one session of
-   60 to 120 minutes, each with concrete acceptance criteria and a test that runs without
-   paid agents (use a fake ACP agent).
-5. Output files: a draft docs/SPEC.md (frozen-spec style), CLAUDE.md (rules for the builder),
-   and prompts/KICKOFF.md (one prompt per milestone). Show them; do not commit code.
+3. Repo choices: which open source repos to use directly vs only borrow ideas from. Use the
+   repos already listed in docs/stitch-plan.md and docs/problem-map.md (they were verified on
+   15 Oct 2026). Only add a new one if you are sure it exists; mark it "unverified".
+4. Milestones: 8 to 12 milestones for the coding agent, each about 60 to 120 minutes, each with
+   acceptance criteria the coding agent can check itself (it will use a fake ACP agent so no paid
+   agent is needed). You only describe the checks; you do not run them.
+5. Three draft documents, each in its own fenced Markdown block so I can copy them into files:
+   docs/SPEC.md (frozen-spec style), CLAUDE.md (rules for the coding agent), and
+   prompts/KICKOFF.md (one paste-in prompt per milestone).
+
+## Format of your reply
+1. Critique (max 5 items)
+2. Architecture and stack (short)
+3. Repo choices (table)
+4. Milestones (table: id, name, minutes, acceptance criteria)
+5. The three draft documents (fenced blocks)
 
 ## Style
 Simple English. Short sentences. Numbered lists, max 5 items per group. No em dashes.
